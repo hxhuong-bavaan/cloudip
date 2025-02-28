@@ -1,0 +1,53 @@
+<?php
+$CONFIG = array (
+  'memcache.local' => '\\OC\\Memcache\\APCu',
+  'apps_paths' =>
+  array (
+    0 =>
+    array (
+      'path' => '/var/www/html/apps',
+      'url' => '/apps',
+      'writable' => false,
+    ),
+    1 =>
+    array (
+      'path' => '/var/www/html/custom_apps',
+      'url' => '/custom_apps',
+      'writable' => true,
+    ),
+  ),
+  'memcache.distributed' => '\\OC\\Memcache\\Redis',
+  'memcache.locking' => '\\OC\\Memcache\\Redis',
+  'redis' =>
+  array (
+    'host' => 'redis',
+    'password' => '',
+    'port' => 6379,
+  ),
+  'upgrade.disable-web' => true,
+  'instanceid' => 'ochf8hbvpnh6',
+  'passwordsalt' => 'T/Ez7CRkJFrYBQc9fIBxieGT5f6L5K',
+  'secret' => 'TWd/1ybypuf26DVH7/Lp0PzmCPVOdVxcykVJqFPj3IcALy+G',
+  'trusted_domains' =>
+  array (
+    0 => 'apps.cloudip.localhost',
+  ),
+  'datadirectory' => '/var/www/html/data',
+  'dbtype' => 'pgsql',
+  'version' => '30.0.4.1',
+  'overwrite.cli.url' => 'http://apps.cloudip.localhost',
+  'dbname' => 'cloudipdev',
+  'dbhost' => 'db',
+  'dbport' => '',
+  'dbtableprefix' => 'oc_',
+  'dbuser' => 'cloudipdev',
+  'dbpassword' => 'cloudipdev',
+  'installed' => true,
+  'app_install_overwrite' =>
+  array (
+    0 => 'widget',
+    1 => 'contact',
+    2 => 'myappboootstrap',
+    3 => 'catgifs',
+  ),
+);

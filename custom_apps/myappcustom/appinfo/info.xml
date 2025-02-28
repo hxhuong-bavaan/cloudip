@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<info>
+    <id>myappcustom</id>
+    <name>My App Custom</name>
+    <summary>Ứng dụng tùy chỉnh cho giao diện</summary>
+    <description>Ứng dụng này thay đổi giao diện của Files.</description>
+    <version>1.0.0</version>
+    <namespace>myappcustom</namespace>
+    <author>Duan</author>
+    <category>tools</category>
+    <dependencies>
+        <nextcloud min-version="30.0" />
+    </dependencies>
+    <resources>
+        <js>js/script.js</js>
+        <css>css/style.css</css>
+    </resources>
+</info>

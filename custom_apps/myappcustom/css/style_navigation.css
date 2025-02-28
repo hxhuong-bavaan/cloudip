@@ -1,0 +1,117 @@
+#menu ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+#menu .menu-item {
+    margin: 0 10px;
+    border-radius: 5px;
+    padding: 6px 12px;
+}
+
+#menu .menu-item-files .menu-item,
+#menu .menu-item-pages .menu-item {
+    padding: 7px 0 7px 80px;
+}
+
+#menu .menu-item-pages .menu-item {
+    font-size: 14px;
+    font-family: 'Inter', sans-serif !important;
+    color: #000 !important;
+    font-weight: 500;
+}
+
+#menu .menu-item a,
+.deletefiles a {
+    font-size: 14px;
+    font-family: 'Inter', sans-serif !important;
+    color: #000 !important;
+    font-weight: 500;
+}
+
+.deletefiles {
+    order: -1;
+    display: flex;
+    align-items: end;
+    padding: 5px 0 5px 52px;
+}
+
+.deletefiles img {
+    width: 18px;
+    height: 18px;
+    margin-right: 8px;
+    vertical-align: middle;
+}
+
+.menu-item img{
+    width: 16px;
+    height: 16px;
+    margin-right: 50px;
+    vertical-align: middle;
+}
+
+.menu-item .arrow img{
+    width: 16px;
+    height: 16px;
+    margin-right: 10px;
+    vertical-align: middle;
+}
+
+.menu-item.active {
+    background-color: #d9edf7;
+    color: #000;
+}
+
+#menu-divider {
+    border-bottom: 1px solid rgba(6, 71, 140, 0.37);
+    margin: 15px 15px;
+}
+
+/* Submenu Styles */
+.has-submenu,
+.menu-widget {
+    display: flex;
+    align-items: center;
+    padding: 0 12px;
+}
+
+.has-submenu {
+    justify-content: space-between;
+}
+
+.has-submenu .arrow {
+    margin-left: 5px;
+}
+
+.submenu {
+    width: 100%;
+    background-color: #fff;
+    border-radius: 4px;
+    z-index: 10;
+    display: none;
+}
+
+.submenu.open {
+    display: block;
+    padding-left: 90px !important;
+}
+
+.submenu-item {
+    padding: 8px 12px;
+    cursor: pointer;
+    font-size: 14px;
+    color: #222;
+    transition: background-color 0.2s;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.submenu-item.active {
+    color: #007bff;
+}
+
+.submenu-item .checkmark {
+    color: #007bff;
+}

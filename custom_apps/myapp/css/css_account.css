@@ -1,0 +1,84 @@
+#app-content-vue table td {
+    border: none !important;
+}
+
+#app-content-vue table th.header__cell.header__cell--displayname {
+    border-right: none !important;
+}
+
+#app-content-vue table th.header__cell.header__cell--actions {
+    border-left: none !important;
+}
+/* #app-content-vue table th,
+#app-content-vue table td{
+    flex:1;
+} */
+
+#app-content-vue table thead tr {
+    border-bottom: 1px solid rgba(6, 71, 140, 0.35) !important;
+}
+
+#app-content-vue table {
+    padding-left: 20px;
+}
+
+#app-content-vue table td.row__cell.row__cell--avatar .avatardiv.popovermenu-wrapper {
+    --size: 35px !important;
+    line-height: 35px !important;
+}
+
+#app-content-vue table th,
+#app-content-vue table td {
+    font-size: 12px;
+    font-family: 'Inter', sans-serif !important;
+}
+
+#app-content-vue table td.row__cell.row__cell--username span {
+    color: #000 !important;
+}
+
+#app-content-vue table th.header__cell.header__cell--displayname {
+   font-weight: 600 !important;
+}
+
+#app-content-vue table td.footer__cell.footer__cell--count.footer__cell--multiline span {
+    color: #626569 !important;
+}
+
+#app-content-vue table th[data-cy-user-list-header-quota],
+#app-content-vue table td[data-cy-user-list-cell-quota],
+#app-content-vue table td[data-cy-user-list-cell-manager],
+#app-content-vue table th[data-cy-user-list-header-manager] {
+    display: none;
+}
+
+#app-navigation-vue .app-navigation-new button{
+    border-radius: 20px;
+    background: #fff;
+    color: #2C78C8;
+    width: 95%;
+    border: 2px solid #2C78C8;
+    margin: 0 auto;
+}
+
+#app-navigation-vue .app-navigation-caption.app-navigation-caption--heading h2 {
+    display: inline-flex;
+    align-items: center;
+    color: #2C78C8;
+    font-size: 14px;
+    font-weight: 600;
+    padding-left: 20px;
+}
+
+#app-navigation-vue .app-navigation-caption.app-navigation-caption--heading h2::before {
+    content: "";
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    background-image: url("../img/peple.svg");
+    background-size: contain;
+    background-repeat: no-repeat;
+    margin-right: 8px;
+    vertical-align: middle;
+    background-position: center
+}

@@ -1,0 +1,90 @@
+version: '3'
+
+services:
+  dbcloudip:
+    image: postgres:alpine
+    #restart: always
+    volumes:
+      - ./db:/var/lib/postgresql/data:Z
+    env_file:
+      - db.env
+    networks:
+      - internal
+
+  redis:
+    image: redis:alpine
+    #restart: always
+    networks:
+      - internal
+
+  nextcloud:
+    image: nextcloud:latest
+    container_name: cloudipdev
+    ports:
+      - "80"
+    #restart: always
+    volumes:
+      - ./src:/var/www/html
+      #- ./cloudip-data:/var/www/html/data
+      # NOTE: The `volumes` config of the `cron` and `app` containers must match
+    labels:
+      # - "traefik.enable=true"
+      # - "traefik.constraint-label=traefik-public"
+      # - "traefik.http.routers.cloudipdev.entrypoints=web"
+      # - "traefik.http.routers.cloudipdev.rule=Host(`apps-cloudip.landofcoder.com`)"
+      # - "traefik.http.middlewares.cloudipdev-https-redirect.redirectscheme.scheme=https"
+      # - "traefik.http.routers.cloudipdev.middlewares=cloudipdev-https-redirect"
+      # - "traefik.http.routers.cloudipdev-secure.entrypoints=websecure"
+      # - "traefik.http.routers.cloudipdev-secure.rule=Host(`apps-cloudip.landofcoder.com`)"
+      # - "traefik.http.routers.cloudipdev-secure.tls=true"
+      # - "traefik.http.routers.cloudipdev-secure.tls.certresolver=le"
+      # - "traefik.http.routers.cloudipdev-secure.service=cloudipdev-svc"
+      # - "traefik.http.services.cloudipdev-svc.loadbalancer.server.port=80"
+      # - "traefik.docker.network=proxy"
+      - "traefik.enable=true"
+      - "traefik.http.routers.cloudipdev.rule=Host(`apps-cloudip.localhost`)"
+      - "traefik.http.routers.cloudipdev.entrypoints=web"
+      - "traefik.http.services.cloudipdev.loadbalancer.server.port=80"
+      - "traefik.docker.network=proxy"
+    environment:
+      - POSTGRES_HOST=dbcloudip
+      - REDIS_HOST=redis
+      - NEXTCLOUD_DB_TYPE=pgsql
+      - NEXTCLOUD_DB_HOST=dbcloudip
+    env_file:
+      - db.env
+    depends_on:
+      - dbcloudip
+      - redis
+    networks:
+      - proxy
+      - internal
+    entrypoint: /bin/bash -c "chown -R www-data:www-data /var/www/html/config && chown -R www-data:www-data /var/www/html/data && chmod -R 755 /var/www/html/config && chmod -R 755 /var/www/html/data && apache2-foreground"
+
+  adminercloudip:
+    image: adminer
+    restart: always
+    depends_on:
+      - dbcloudip
+    ports:
+      - 8080
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.adminrcloudip.rule=Host(`adminr-cloudip.localhost`)"
+      - "traefik.http.routers.adminrcloudip.entrypoints=web"
+      - "traefik.http.services.adminrcloudip.loadbalancer.server.port=8080"
+      - "traefik.docker.network=proxy"
+    networks:
+      - proxy
+      - internal
+
+volumes:
+  db:
+  nextcloud:
+  
+networks:
+  proxy:
+    external:
+      name: proxy
+  internal:
+    driver: bridge

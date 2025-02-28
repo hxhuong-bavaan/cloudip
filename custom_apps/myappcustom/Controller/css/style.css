@@ -1,0 +1,215 @@
+#header .logo {
+    width: 180px
+}
+
+#nextcloud {
+    position: inherit
+}
+
+body {
+    font-family: inter;
+    width: calc(100%) !important;
+    left: 0px !important;
+}
+
+.unified-search-menu .material-design-icon__svg,
+.notifications-button__icon,
+#contactsmenu .contacts-icon .material-design-icon__svg,
+#notifications .material-design-icon__svg {
+    fill: #fff;
+    width: 25px;
+    height: 25px;
+}
+
+.unified-search-modal__filters .material-design-icon__svg {
+    fill: #2C78C8;
+}
+
+.avatardiv.popovermenu-wrapper.account-menu__avatar {
+    --size: 35px !important;
+    line-height: 35px !important;
+    font-size: 14px;
+}
+
+ul {
+    margin-bottom: 0rem;
+}
+
+#header {
+    height: 54px !important;
+}
+
+@media (prefers-color-scheme: light) {
+    :root {
+        --header-height: 54px !important;
+        --color-error: #E25A31 !important;
+        --color-error-rgb: 226, 90, 49, 1 !important;
+        --color-error-hover: #E25A31 !important;
+        --color-error-text: #E25A31 !important;
+        --color-warning: #FFEB0F !important;
+        --color-warning-rgb: 255, 235, 15, 1 !important;
+        --color-warning-hover: #FFEB0F !important;
+        --color-warning-text: #FFEB0F !important;
+        --color-success: #76B53A !important;
+        --color-success-rgb: 118, 181, 58, 1 !important;
+        --color-success-hover: #76B53A !important;
+        --color-success-text: #76B53A !important;
+        --color-primary: rgba(44, 120, 200, 1) !important;
+        --color-primary-text: #000000 !important;
+        --color-primary-hover: #000000 !important;
+        --color-border-maxcontrast: #2C78C8 !important;
+        --color-text-maxcontrast: #2C78C8 !important;
+        --color-primary-element-light-text: #000000 !important;
+        --color-main-text: #000000 !important;
+        --side-menu-current-app-background-color: #06478C !important;
+        --image-background: url(../img/background.png) !important;
+    }
+}
+
+body {
+    background-color: #2C78C8 !important;
+    background-image: url(../img/background.png) !important;
+    background-size: cover;
+    background-position: center;
+    position: fixed;
+    width: 100%;
+    height: calc(100vh - env(safe-area-inset-bottom));
+}
+
+.unified-search-modal__no-content .empty-content__name,
+#header-menu-contactsmenu .empty-content__name,
+#header-menu-notifications .empty-content__name {
+    color: #626569 !important;
+    font-weight: 400 !important;
+}
+
+.modal-container .close-icon {
+    color: #4E84C1 !important;
+}
+
+.modal-container .dialog__name {
+    text-align: left !important;
+    font-size: 16px !important;
+}
+
+.modal-container {
+    padding: 20px 0 0 21px !important;
+}
+
+.input-field__input[data-v-374fffac]:focus:not([disabled]) {
+    border-color: #2C78C8 !important;
+}
+
+.input-field__input[data-v-374fffac]:focus:not([disabled])::placeholder {
+    color: transparent !important;
+}
+
+.input-field__input[data-v-374fffac]:hover:not([disabled]) {
+    border-color: #2C78C8 !important;
+}
+
+.input-field__input:focus+.input-field__label[data-v-374fffac] {
+    color: #2C78C8 !important;
+}
+
+.input-field__input:hover:not(:placeholder-shown)+.input-field__label[data-v-374fffac] {
+    color: #2C78C8 !important;
+}
+
+#content-vue #side-menu-container {
+    order: -1;
+    z-index: 99999999 !important;
+}
+
+#content #side-menu-container {
+    order: -1;
+    z-index: 99999999 !important;
+}
+
+#side-menu {
+    position: inherit !important;
+    width: 55px !important;
+    background: #2C78C8 !important;
+}
+
+.side-menu-apps-list {
+    z-index: 2200;
+    position: inherit !important;
+    max-width: 290px;
+}
+
+.side-menu-always-displayed #side-menu .side-menu-header {
+    height: 55px !important;
+}
+
+#body-user {
+    width: calc(100%) !important;
+    position: absolute;
+    left: 0px !important;
+}
+
+#content-vue {
+    border: 2px solid rgba(242, 242, 242, 0.85);
+}
+
+.account-menu__avatar[data-v-a886d77a]:hover {
+    border: none !important;
+}
+
+#header-menu-user-menu .account-menu-entry__icon {
+    height: 20px !important;
+    width: 20px !important;
+}
+
+#accessibility_settings,
+#header-menu-user-menu .user-status-menu-item,
+#firstrunwizard_about {
+    display: none !important;
+}
+
+#side-menu-container .side-menu-app.active:after {
+    position: absolute;
+    content: "";
+    width: 4px;
+    height: 100%;
+    border-radius: 4px;
+    background: #76B53A;
+    right: 0;
+    top: 0;
+}
+
+#side-menu-container .side-menu-app {
+    position: relative;
+}
+
+.side-menu-always-displayed .side-menu-apps-list {
+    width: 100% !important;
+}
+
+#app-navigation-vue .custom-dashboard-item {
+    order: -1;
+    padding-top: 19px;
+    padding-left: 16px;
+    padding-bottom: 17px;
+    font-size: 16px;
+    line-height: 19.36px;
+    font-weight: 700;
+    font-family: 'Inter';
+    display: inline-block;
+}
+
+#content {
+    left: 0px !important;
+    width: calc(100% - 20px) !important;
+    margin: 54px 8px 8px 10px !important;
+}
+
+#content-vue {
+    width: calc(100% - 20px) !important;
+    margin-left: 10px !important;
+}
+
+#body-settings {
+    width: calc(100%) !important;
+    position: absolute;
+}

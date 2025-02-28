@@ -1,0 +1,22 @@
+<?php
+$CONFIG = array (
+  'instanceid' => 'ocvjo8aea96s',
+  'passwordsalt' => 'B4uKeQC5Ax6clR95415W7p/kAGlkq7',
+  'secret' => 'BpFtoIasWgeKBBRj7XlIEI+3unvhGHy78xkv13wBmQpfvcZK',
+  'trusted_domains' => 
+  array (
+    0 => '70.90.149.3',
+  ),
+  'datadirectory' => '/var/www/html/nextcloud/data',
+  'dbtype' => 'mysql',
+  'version' => '30.0.1.2',
+  'overwrite.cli.url' => 'http://70.90.149.3',
+  'dbname' => 'nextcloud',
+  'dbhost' => 'localhost',
+  'dbport' => '',
+  'dbtableprefix' => 'oc_',
+  'mysql.utf8mb4' => true,
+  'dbuser' => 'nextcloud',
+  'dbpassword' => 'NcdG8kgZStronVCDz9',
+  'installed' => true,
+);

@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<info>
+    <id>myapp</id>
+    <name>My Custom App</name>
+    <description>Ứng dụng ghi đè side menu script</description>
+    <version>1.0.0</version>
+    <namespace>myapp</namespace>
+    <author>My Name</author>
+    <category>tools</category>
+    <dependencies>
+        <nextcloud min-version="30.0" />
+    </dependencies>
+    <resources>
+        <js>js/custom_side_menu_script.js</js> 
+        <css>css/custom_style.css</css> 
+    </resources>
+</info>

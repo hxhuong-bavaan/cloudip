@@ -1,0 +1,49 @@
+variables:
+  TAG_LATEST: $CI_REGISTRY_IMAGE/$CI_COMMIT_REF_NAME:latest
+  TAG_COMMIT: $CI_REGISTRY_IMAGE/$CI_COMMIT_REF_NAME:$CI_COMMIT_SHORT_SHA
+
+deploy-job:
+  timeout: 125m
+  variables:
+    RUNNER_SCRIPT_TIMEOUT: 120m
+    RUNNER_AFTER_SCRIPT_TIMEOUT: 120m
+  stage: deploy
+  environment: production
+  before_script:
+    - eval $(ssh-agent -s)
+    - echo "$NEXTCLOUD_SSH" | tr -d '\r' | ssh-add -
+    - mkdir -p ~/.ssh
+    - ssh-keyscan apps.cloudip.com >> ~/.ssh/known_hosts
+
+  script:
+    - echo "Deploying application..."
+
+    - echo "Step 0 - Clean /var/www/deploy/nextcloud-build folder"
+    - ssh root@apps.cloudip.com "rm -rf /var/www/deploy/nextcloud-build && mkdir /var/www/deploy/nextcloud-build"
+
+    - echo "Step 1 - Copy repo content from the main branch"
+    - rsync -azq --progress ./ root@apps.cloudip.com:/var/www/deploy/nextcloud-build/
+
+    - echo "Step 2 - Update permissions on npm-post-build.sh"
+    - ssh root@apps.cloudip.com "chmod +x /var/www/deploy/nextcloud-build/build/npm-post-build.sh"
+
+    - echo "Step 3 - Update permissions on /var/www/deploy/nextcloud-build"
+    - ssh root@apps.cloudip.com "chown -R www-data:www-data /var/www/deploy/nextcloud-build"
+
+    - echo "Step 4 - NPM install & build"
+    - ssh root@apps.cloudip.com "cd /var/www/deploy/nextcloud-build && sudo -u www-data npm install --force && sudo -u www-data npm run build && sudo -u www-data npm run sass"
+
+    - echo "Step 5 - Copy files to the production folder"
+    - ssh root@apps.cloudip.com "cp -R /var/www/deploy/nextcloud-build/* /var/www/html/nextcloud/ && chown -R www-data:www-data /var/www/html/nextcloud"
+
+    - echo "Step 6 - Maintenance mode, cleanup, repair, and restart"
+    - ssh root@apps.cloudip.com "
+        sudo -u www-data php /var/www/html/nextcloud/occ maintenance:mode --on &&
+        sudo -u www-data php /var/www/html/nextcloud/occ maintenance:mode --off &&
+        sudo chown -R www-data:www-data /var/www/html/nextcloud/data/ &&
+        sudo chmod -R 750 /var/www/html/nextcloud/data/ &&
+        sudo -u www-data php /var/www/html/nextcloud/occ maintenance:repair &&
+        sudo systemctl restart apache2
+      "
+
+    - echo "Nextcloud successfully deployed"
