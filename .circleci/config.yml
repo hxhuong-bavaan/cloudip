@@ -49,7 +49,14 @@ jobs:
           command: |
             git config user.email "hx.huong.bavaan@gmail.com"
             git config user.name "hxhuong-dev"
+            rm -rf .circleci/
+            git add .
+            git commit -m "Release package"
+            git push origin HEAD:release-temp --force
+            git reset --hard origin/release
+            git merge origin/release-temp --no-ff --no-edit
             git push origin HEAD:release
+            git push origin :release-temp
 
 workflows:
   version: 2
