@@ -56,12 +56,12 @@ jobs:
 
     steps:
       - name: Checkout server
-        uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
         with:
           submodules: true
 
       - name: Set up php ${{ matrix.php-versions }}
-        uses: shivammathur/setup-php@c541c155eee45413f5b09a52248675b1a2575231 #v2.31.1
+        uses: shivammathur/setup-php@cf4cade2721270509d5b1c766ab3549210a39a2a #v2.33.0
         with:
           php-version: ${{ matrix.php-versions }}
           # https://docs.nextcloud.com/server/stable/admin_manual/installation/source_installation.html#prerequisites-for-manual-installation
@@ -91,7 +91,7 @@ jobs:
 
       - name: Upload code coverage
         if: ${{ !cancelled() && matrix.coverage }}
-        uses: codecov/codecov-action@922d8d7b314a529f2be903c1e79ee8283c492863 # v4.1.1
+        uses: codecov/codecov-action@ad3126e916f78f00edff4ed0317cf185271ccc2d # v4.1.1
         with:
           files: ./clover.xml
           flags: phpunit-files-external-webdav
